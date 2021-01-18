@@ -1,19 +1,16 @@
-const handle = require('../jobs/sendEmail')
-const job = require('../queue')
+const job = require('../helpers/queue')
 
-// const EmailGmail = require('../helpers/google')
 
 const UseController = {
     async storage(req, res) {
         const {user, email, pass} = req.body
 
         const User = {user, email, pass}
-        const response = await handle(User)
-
-        // adicionar jobs na fila
-        const a = await job.add('sendEMail', response)
         
-        res.json(a)
+        // adicionar jobs na fila
+        await job.add(User)        
+        
+        res.send('email enviado')
 
     },
     // index(req, res)  {

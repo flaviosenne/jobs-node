@@ -1,8 +1,9 @@
 const Email = require('../helpers/email')
 
-module.exports =
-    handle = async (data) => {
-
+module.exports ={
+    key: 'sendEmail',
+    async handle({data}) {
+        
         const { name, email } = data
         await Email.sendMail({
             from: `joao dev <${process.env.MAIL_USER}>`,
@@ -11,4 +12,5 @@ module.exports =
             html: 'Este e-mail é uma das tarefas a serem realizadas pelo processo da Empresa iZagro'
         })
     }
+}
 
