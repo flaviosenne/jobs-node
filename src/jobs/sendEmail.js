@@ -1,15 +1,14 @@
 const Email = require('../helpers/email')
 
-module.exports = {
+module.exports =
+    handle = async (data) => {
 
-    sendEmail(data){
-        
-        const {name, email} = data
-        Email.sendMail({
-            from: 'iZagro <processo@izagro.com.br>',
+        const { name, email } = data
+        await Email.sendMail({
+            from: `joao dev <${process.env.MAIL_USER}>`,
             to: `${name} <${email}>`,
             subject: 'Mandar e-mail para processo',
             html: 'Este e-mail é uma das tarefas a serem realizadas pelo processo da Empresa iZagro'
         })
     }
-}
+

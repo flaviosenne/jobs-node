@@ -6,5 +6,6 @@ routes.get('/', (req, res) => {
 })
 
 routes.post('/email/send', User.storage)
+// routes.get('/email/send', User.index)
 
 module.exports = routes
